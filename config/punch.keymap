@@ -41,6 +41,30 @@
             key-positions = <11 12>;
             layers = <0>;
         };
+
+        combo_0x {
+            bindings = <&hex_head>;
+            key-positions = <8 7>;
+            layers = <2>;
+        };
+
+        combo_mouse {
+            bindings = <&to 7>;
+            key-positions = <1 7 9>;
+            layers = <0>;
+        };
+
+        combo_alpha0 {
+            bindings = <&to 0>;
+            key-positions = <1 7 9>;
+            layers = <7>;
+        };
+
+        combo_tobt {
+            bindings = <&to 9>;
+            key-positions = <0 1 2 9 8 7>;
+            layers = <0>;
+        };
     };
 
     behaviors {
@@ -64,6 +88,25 @@
             flavor = "tap-preferred";
             bindings = <&kp>, <&kp>;
         };
+
+        shift_caps: shift_caps {
+            compatible = "zmk,behavior-hold-tap";
+            label = "SHIFT_CAPS";
+            bindings = <&kp>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <250>;
+            flavor = "tap-preferred";
+        };
+    };
+
+    macros {
+        hex_head: hex_head {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp N0 &kp X>;
+            label = "HEX_HEAD";
+        };
     };
 
     keymap {
@@ -71,61 +114,61 @@
 
         alpha0 {
             bindings = <
-&hm LEFT_ALT S  &hm LGUI H  &hm LEFT_SHIFT T  &hm RIGHT_SHIFT N  &hm RIGHT_GUI E  &hm RALT O  &hm LCTRL A  &hl 3 D  &hl 4 R  &hl 5 C  &hl SYS L  &hl 4 U  &hl 3 BACKSPACE  &hm RCTRL I  &none  &kp SPACE  &sl 1  &none
+&hm LEFT_ALT S  &hm LGUI H  &kp T  &hl 5 N  &hm RIGHT_GUI E  &hm RALT O  &hm LCTRL A  &hl 8 D  &kp R  &hl 3 C  &hl 4 L  &kp U  &kp BACKSPACE  &hm RCTRL I  &none  &hl 2 SPACE  &sl 1  &none
             >;
         };
 
         alpha1 {
             bindings = <
-&kp W  &kp M  &kp B  &kp Y  &kp J  &kp F  &kp Q  &kp Z  &kp X  &kp V  &kp G  &kp P  &kp K  &kp SEMI  &none  &kp TAB  &kp ENTER  &none
+&kp W  &kp M  &kp B  &kp Y  &kp J  &kp F  &kp Q  &kp Z  &kp X  &kp V  &kp G  &kp P  &kp K  &kp SEMI  &none  &kp TAB  &key_repeat  &none
             >;
         };
 
         number {
             bindings = <
-&kp ESC  &kp N7  &kp N8  &kp N9  &kp N4  &kp N5  &kp N6  &kp DOT  &kp LSFT  &kp X  &caps_word  &kp N1  &kp N2  &kp N3  &kp LCTRL  &none  &none  &kp N0
+&kp ESC  &caps_word  &kp DELETE  &kp N4  &kp N5  &kp N6  &shift_caps CAPSLOCK LEFT_SHIFT  &kp N7  &kp N8  &kp N9  &kp N1  &kp N2  &kp N3  &kp N0  &none  &none  &kp DOT  &none
             >;
         };
 
         symbol0 {
             bindings = <
-&kp PLUS  &kp MINUS  &kp STAR  &kp FSLH  &kp GRAVE  &kp TILDE  &kp SQT  &kp DQT  &kp UNDER  &kp BSLH  &kp PIPE  &kp QMARK  &kp COMMA  &kp DOT  &kp LCTRL  &none  &none  &kp EQUAL
+&kp PLUS  &kp MINUS  &none  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp LESS_THAN  &kp EQUAL  &kp ASTERISK  &kp SLASH  &none  &kp LEFT_BRACKET  &kp RIGHT_BRACKET  &kp GREATER_THAN  &kp RIGHT_BRACE  &none  &kp TAB  &kp LEFT_BRACE  &none
             >;
         };
 
         symbol1 {
             bindings = <
-&kp EXCL  &kp AT  &kp HASH  &kp DLLR  &kp LBKT  &kp LPAR  &kp RPAR  &kp RBKT  &kp PRCNT  &kp CARET  &kp AMPS  &kp RBRC  &kp LT  &kp GT  &kp LCTRL  &none  &none  &kp LBRC
+&kp AT_SIGN  &kp POUND  &kp DOLLAR  &none  &kp GRAVE  &kp BACKSLASH  &kp EXCLAMATION  &kp PERCENT  &kp CARET  &kp AMPERSAND  &none  &kp COMMA  &kp DOT  &kp SINGLE_QUOTE  &none  &kp QUESTION  &kp ENTER  &none
             >;
         };
 
-        system {
+        nav {
             bindings = <
-&kp DEL  &kp PG_UP  &kp INS  &kp PG_DN  &kp HOME  &kp UP  &kp END  &sl FUNC  &kp LC(C)  &kp LC(V)  &kp LC(Z)  &kp LEFT  &kp DOWN  &kp RIGHT  &kp TAB  &none  &none  &kp ENTER
+&kp HOME  &kp UP_ARROW  &kp END  &none  &sk RIGHT_GUI  &sk RIGHT_ALT  &kp PAGE_UP  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &kp INSERT  &sk RIGHT_SHIFT  &sl 6  &sk RCTRL  &none  &kp PAGE_DOWN  &kp ENTER  &none
             >;
         };
 
         function {
             bindings = <
-&none  &kp F1  &kp F2  &kp F3  &kp F7  &kp F8  &kp F9  &none  &kp F4  &kp F5  &kp F6  &kp F10  &kp F11  &kp F12  &none  &none  &none  &none
+&kp F10  &kp F11  &kp F12  &kp F4  &kp F5  &kp F6  &none  &kp F7  &kp F8  &kp F9  &kp F1  &kp F2  &kp F3  &none  &none  &kp SPACE  &none  &none
             >;
         };
 
         mouse {
             bindings = <
-&none  &msc SCRL_UP  &mmv MOVE_UP  &msc SCRL_DOWN  &none  &mkp LCLK  &mkp RCLK  &kp DOT  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &none  &none  &none  &kp LS(LA(LCTRL))  &none  &none  &none
+&mkp LCLK  &mmv MOVE_UP  &mkp RCLK  &none  &none  &none  &msc SCRL_UP  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &none  &none  &none  &none  &none  &msc SCRL_DOWN  &none  &none
             >;
         };
 
         custom {
             bindings = <
-&kp C_MUTE  &kp C_VOL_DN  &kp C_VOL_UP  &none  &sk LSHIFT  &sk LALT  &sk LGUI  &sk LCTRL  &none  &none  &kp PSCRN  &kp LS(TAB)  &trans  &kp TAB  &none  &none  &none  &sk LS(LA(LCTRL))
+&none  &kp LC(X)  &none  &none  &none  &none  &kp LC(LGUI)  &none  &kp LC(C)  &kp LC(V)  &none  &none  &none  &none  &none  &none  &none  &none
             >;
         };
 
         bluetooth {
             bindings = <
-&none  &none  &bt BT_PRV  &bt BT_NXT  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_CLR  &none  &none  &none  &bt BT_SEL 3  &bt BT_SEL 4  &bt BT_SEL 5  &to ALP0  &none  &none  &none
+&bt BT_CLR  &studio_unlock  &none  &none  &none  &none  &bt BT_SEL 3  &bt BT_SEL 2  &bt BT_SEL 1  &bt BT_SEL 0  &none  &none  &none  &none  &none  &to 0  &none  &none
             >;
         };
     };
