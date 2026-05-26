@@ -29,11 +29,13 @@
         combo_tab {
             bindings = <&kp TAB>;
             key-positions = <1 0>;
+            timeout-ms = <30>;
         };
 
         combo_enter {
             bindings = <&kp ENTER>;
             key-positions = <4 5>;
+            timeout-ms = <30>;
         };
 
         combo_bspc {
@@ -46,6 +48,7 @@
             bindings = <&hex_head>;
             key-positions = <8 7>;
             layers = <2>;
+            timeout-ms = <30>;
         };
 
         combo_mouse {
