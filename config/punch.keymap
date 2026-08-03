@@ -117,13 +117,13 @@
 
         alpha0 {
             bindings = <
-&hm LEFT_ALT S  &hm LGUI H  &kp T  &hl 5 N  &hm RIGHT_GUI E  &hm RALT O  &hm LCTRL A  &hl 8 D  &kp R  &hl 3 C  &hl 4 L  &kp U  &kp BACKSPACE  &hm RCTRL I  &none  &hl 2 SPACE  &sl 1  &none
+&hm LEFT_ALT S  &hm LGUI H  &kp T  &hl 5 N  &hm RIGHT_GUI E  &hm RALT O  &hm LCTRL A  &hl 8 D  &kp R  &hl 3 C  &hl 4 L  &kp K  &kp U  &hm RCTRL I  &none  &hl 2 SPACE  &sl 1  &none
             >;
         };
 
         alpha1 {
             bindings = <
-&kp W  &kp M  &kp B  &kp Y  &kp J  &kp F  &kp Q  &kp Z  &kp X  &kp V  &kp G  &kp P  &kp K  &kp SEMI  &none  &kp TAB  &key_repeat  &none
+&kp W  &kp M  &kp B  &kp Y  &kp J  &kp F  &kp Q  &kp Z  &kp X  &kp V  &kp G  &kp P  &key_repeat  &kp SEMI  &none  &kp TAB  &kp ENTER  &none
             >;
         };
 
